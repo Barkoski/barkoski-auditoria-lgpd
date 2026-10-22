@@ -1,0 +1,4 @@
+interface:
+  display_name: "Auditoria LGPD Brasil"
+  short_description: "Revise privacidade, código e governança com evidências"
+  default_prompt: "Use $auditoria-lgpd-br para auditar este projeto, apresentar riscos com evidências e propor correções sem alterar o código."

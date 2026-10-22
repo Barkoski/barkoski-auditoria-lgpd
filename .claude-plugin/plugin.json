@@ -1,0 +1,15 @@
+{
+  "name": "barkoski-auditoria-lgpd",
+  "version": "0.1.0",
+  "description": "Auditoria técnico-jurídica de projetos quanto à LGPD, com evidências, riscos e plano de ação. Requer revisão humana.",
+  "author": {
+    "name": "Lucas Barkoski"
+  },
+  "license": "Apache-2.0",
+  "keywords": [
+    "lgpd",
+    "privacy",
+    "brazil",
+    "audit"
+  ]
+}
