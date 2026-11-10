@@ -4,7 +4,7 @@ Preencher com fatos da auditoria; campos desconhecidos recebem “não informado
 
 ## 1. Decisão e limites
 
-Identificação do projeto/revisão, data/fuso, objetivo, ambientes e fontes acessados; conclusão nos termos do SKILL.md. Principais riscos, medidas recomendadas antes de publicar e limites da análise. Declarar “diagnóstico técnico-jurídico para revisão humana; não constitui certificação de conformidade”.
+Identificação do projeto/revisão, data/fuso, objetivo, ambientes e fontes acessados; conclusão nos termos do SKILL.md. Principais riscos, medidas recomendadas antes de publicar e limites da análise. Declarar “diagnóstico técnico-jurídico para revisão humana; não constitui certificação de conformidade”. Informar o degrau da cadeia de fontes usado (1 oficial, 2 espelho oficial, 3 base local, 4 dispositivos-chave embutidos, 5 memória) e, a partir do 3, que a vigência não foi revalidada. Informar se a varredura determinística rodou (script ou padrões manuais) e onde está a saída.
 
 ## 2. Inventário de operações
 
