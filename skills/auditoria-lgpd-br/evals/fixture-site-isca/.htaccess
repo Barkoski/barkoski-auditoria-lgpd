@@ -1,0 +1,6 @@
+# Bloqueia apenas config.php (isca: tmp/ e sql/ ficam sem protecao)
+<FilesMatch "^(config\.php)$">
+  Require all denied
+</FilesMatch>
+
+Options -Indexes
