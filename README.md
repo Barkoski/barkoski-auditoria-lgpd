@@ -3,8 +3,8 @@
 </p>
 
 <p align="center">
-<img alt="0.1.0 candidata" src="https://img.shields.io/badge/0.1.0%20candidata-74839b">
-<img alt="Plugin de instruções" src="https://img.shields.io/badge/Plugin%20de%20instru%C3%A7%C3%B5es-74839b">
+<img alt="0.2.0 candidata" src="https://img.shields.io/badge/0.2.0%20candidata-74839b">
+<img alt="Instruções e script de leitura" src="https://img.shields.io/badge/Instru%C3%A7%C3%B5es%20%2B%20script%20de%20leitura-74839b">
 <img alt="Apache-2.0" src="https://img.shields.io/badge/Apache--2.0-74839b">
 </p>
 
@@ -27,7 +27,9 @@ Criado por **[Lucas Barkoski](https://github.com/Barkoski)**.
 |---|---|
 | 🗺️ Inventário | Tratamentos e fluxos de dados identificados no escopo |
 | 📋 Cobertura | Matriz organizada em 20 áreas |
+| 🔍 Varredura | Script somente leitura que aponta segredos, rastreadores, coleta de dados, artefatos e o que o deploy empacota (valores mascarados) |
 | 🔎 Achados | Evidências, riscos e pontos não verificados |
+| 🧭 Decisões do dono | Perguntas simples sobre o que o código não responde (controlador, base legal, retenção, fornecedores) e minutas geradas a partir das respostas |
 | 🛠️ Plano de ação | Correções priorizadas para decisão dos responsáveis |
 
 <a id="secao-2"></a>
@@ -37,7 +39,16 @@ Criado por **[Lucas Barkoski](https://github.com/Barkoski)**.
 2. Copie `skills/auditoria-lgpd-br` para a pasta de skills do ambiente compatível.
 3. Inicie uma nova sessão e indique expressamente o projeto e os materiais autorizados.
 
-Para instalação como plugin, o pacote inclui `.claude-plugin/plugin.json`. A validação do pacote no ambiente de destino continua necessária.
+**No Claude Code (plugin):** dentro de uma sessão, rode
+
+```text
+/plugin marketplace add Barkoski/barkoski-auditoria-lgpd
+/plugin install barkoski-auditoria-lgpd@barkoski
+```
+
+Para atualizar depois: `/plugin marketplace update barkoski`. O pacote passa em `claude plugin validate --strict`.
+
+**No claude.ai (app web ou desktop):** compacte a pasta `skills/auditoria-lgpd-br` em um `.zip` (a pasta inteira, com o `SKILL.md` dentro dela) e envie em **Personalizar → Skills → Enviar skill**. A execução de código precisa estar ativa nas configurações. A execução do script de varredura nesse ambiente ainda não foi testada; sem ela, a skill usa o roteiro manual de `references/padroes-varredura.md`.
 
 <a id="secao-3"></a>
 ## 💡 Exemplo de pedido
@@ -51,7 +62,7 @@ Não acesse produção nem envie dados privados para pesquisas.
 <a id="secao-4"></a>
 ## 🚧 Estado do pacote
 
-Versão candidata **0.1.0**, sem aprovação alegada pela Anthropic. A revisão estática é registrada no projeto; testes comportamentais e validação no portal continuam pendentes. O resultado não é certificado, parecer jurídico definitivo ou garantia de segurança e conformidade.
+Versão candidata **0.2.0** (mudanças no [CHANGELOG](CHANGELOG.md)), sem aprovação alegada pela Anthropic. A revisão estática é registrada no projeto; testes comportamentais e validação no portal continuam pendentes. O resultado não é certificado, parecer jurídico definitivo ou garantia de segurança e conformidade.
 
 <a id="secao-5"></a>
 ## 🚀 Uso
@@ -63,7 +74,7 @@ Forneça apenas projeto e ambientes que você pode autorizar. Prefira dados sint
 <a id="secao-6"></a>
 ## 🔒 Dados e permissões
 
-Este plugin contém somente instruções e referências. Não inclui executáveis, hooks, servidores MCP, telemetria própria ou serviço do autor. Durante o uso, o agente pode ler código e dados pessoais que estejam nos materiais autorizados e criar relatórios locais. O processamento pelo modelo e ferramentas segue as condições da plataforma e da conta: o plugin não garante execução local, ausência de retenção nem exclusão automática do histórico.
+Este plugin contém instruções, referências e um script Python de varredura (`skills/auditoria-lgpd-br/scripts/varredura.py`). O script usa só a biblioteca padrão, apenas lê arquivos, não acessa a rede, não executa nada do projeto (o único processo externo é `git` em modo de leitura, para saber se `.env` está versionado; sem git, essa checagem é pulada), mascara segredos e dados pessoais na saída e se recusa a gravar o resultado dentro do projeto auditado. Leia o script antes de executá-lo. O plugin não inclui hooks, servidores MCP, telemetria própria ou serviço do autor. Durante o uso, o agente pode ler código e dados pessoais que estejam nos materiais autorizados e criar relatórios locais. O processamento pelo modelo e ferramentas segue as condições da plataforma e da conta: o plugin não garante execução local, ausência de retenção nem exclusão automática do histórico.
 
 Pesquisas de legislação devem usar termos genéricos e fontes oficiais, sem transmitir material privado. Relatórios devem conter evidências mínimas sanitizadas em destino restrito, nunca publicado automaticamente. O autor não recebe dados por um mecanismo deste pacote. Os relatórios permanecem no destino escolhido até que o usuário ou sua política os remova; não há serviço próprio de armazenamento nem prazo universal definido pelo plugin.
 
@@ -72,7 +83,7 @@ Destinado a profissionais e responsáveis por projetos, não a crianças/adolesc
 <a id="secao-7"></a>
 ## 🚧 Conteúdo e limites
 
-A skill está em `skills/auditoria-lgpd-br/`, com referências jurídicas, matriz e modelo de relatório. Pesquisa-base: 22/10/2026; as fontes precisam ser revalidadas em cada auditoria. Duas publicações orientativas não tiveram conteúdo integral recuperado na pesquisa inicial; a limitação está descrita nas referências.
+A skill está em `skills/auditoria-lgpd-br/`, com referências jurídicas, matriz, modelo de relatório, roteiro de decisões do dono, texto literal datado dos dispositivos mais usados (captura de 14/10/2026) e o script de varredura com projeto-isca e testes em `evals/`. Pesquisa-base: 22/10/2026; as fontes precisam ser revalidadas em cada auditoria, seguindo a cadeia de fontes do `SKILL.md`. Duas publicações orientativas não tiveram conteúdo integral recuperado na pesquisa inicial; a limitação está descrita nas referências.
 
 Segurança por instrução não substitui sandbox, permissões mínimas e supervisão. Um resultado sem achados não comprova conformidade integral. A revisão deve declarar quais ambientes e documentos não foram acessados.
 

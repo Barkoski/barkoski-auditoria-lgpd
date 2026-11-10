@@ -1,0 +1,14 @@
+{
+  "name": "barkoski",
+  "description": "Plugins de Lucas Barkoski para privacidade e LGPD em projetos de software.",
+  "owner": {
+    "name": "Lucas Barkoski"
+  },
+  "plugins": [
+    {
+      "name": "barkoski-auditoria-lgpd",
+      "source": "./",
+      "description": "Auditoria técnico-jurídica de projetos quanto à LGPD, com varredura automática, evidências, plano de ação e roteiro de decisões do responsável. Requer revisão humana."
+    }
+  ]
+}
