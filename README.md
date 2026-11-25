@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/banner.svg" alt="Auditoria LGPD Brasil — Código, dados e governança examinados com evidências." width="100%">
+  <img src="assets/banner.svg" alt="Auditoria LGPD Brasil: Código, dados e governança examinados com evidências." width="100%">
 </p>
 
 <p align="center">

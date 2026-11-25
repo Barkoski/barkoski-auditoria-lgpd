@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2.0 — 10/11/2026 (candidata)
+## 0.2.0: 10/11/2026 (candidata)
 
 Motivação: testes em projetos reais mostraram que a skill diagnosticava bem, mas (1) não conduzia o dono até a adequação, (2) falhava na atualização jurídica sempre que a fonte oficial não respondia e (3) dependia de o modelo lembrar o que procurar.
 
@@ -21,6 +21,6 @@ Motivação: testes em projetos reais mostraram que a skill diagnosticava bem, m
 ### Registrado para verificação
 - Lei 15.352/2026 aparece como origem da redação dos incisos VIII e XIX do art. 5º da LGPD na captura de 14/10/2026. Alcance não verificado.
 
-## 0.1.0 — 22/10/2026
+## 0.1.0: 22/10/2026
 
 Versão inicial.
